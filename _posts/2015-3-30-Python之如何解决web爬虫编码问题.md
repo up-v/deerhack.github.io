@@ -14,11 +14,11 @@ print br.title
     html = br.open(url).read()
     code = re.search(r"(charset=["])([a-zA-Z0-9-])(["])", html)
     if code:
-    code = code.group(2)
+        code = code.group(2)
     else:
-    code = 'utf-8'
-    title = br.title()
-    title = title.decode(code).encode('utf-8')
+        code = 'utf-8'
+        title = br.title()
+        title = title.decode(code).encode('utf-8')
     print title
 
 但是实战的时候并非如此，还是会出现一些问题。于是将代码做了如下改动，排除mechanize的问题之外，准确率达到了百分之九十八以上了。
@@ -26,17 +26,16 @@ print br.title
     html = br.open(url).read()
     code = re.search(r"(charset=["])([a-zA-Z0-9-])(["])", html)
     if code:
-    code = code.group(2)
-
+        code = code.group(2)
     else:
-    code = 'utf-8'
+        code = 'utf-8'
     title = br.title()
     try:
-    title = title.decode(code).encode('utf-8')
+        title = title.decode(code).encode('utf-8')
     except:
-    try:
-    if code is not'utf-8':
-    title = title.decode('gbk').encode('utf-8')
-    except BaseException, e:
-    pass
+        try:
+            if code is not'utf-8':
+            title = title.decode('gbk').encode('utf-8')
+        except BaseException, e:
+        pass
     print title, url,
