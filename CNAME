@@ -1,1 +1,5 @@
-
+CNAME:
+    deerhack.com
+DNS:
+    @ A 192.30.252.153
+    www A 192.30.252.154
