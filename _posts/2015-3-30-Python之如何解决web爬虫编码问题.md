@@ -3,13 +3,15 @@ layout: post
 title: Python之如何解决web爬虫编码问题
 ---
 
-最近写扫描器了，在获取site title的时候遇到了一个问题，那就是不同site的charset是不同的，因此，在使用mechanize的时候，br = mechanize.Browser()
-print br.title
+最近写扫描器了，在获取site title的时候遇到了一个问题，那就是不同site的charset是不同的，因此，在使用mechanize的时候，
+###
+    br = mechanize.Browser()
+    print br.title
 之后会出现编码问题，导致了乱码现象。
 在网上找了一大堆的解决方案，还是不能完美解决。于是没办法，自己动手丰衣足食。
 解决方案：
 获取html的charset信息，然后再decode().encode()
-带密码如下：
+带码如下：
 ###
     html = br.open(url).read()
     code = re.search(r"(charset=["])([a-zA-Z0-9-])(["])", html)
