@@ -16,7 +16,10 @@ title: Google rank by Python
         Result = Result >> 23 | Result << 9
         Result &= 0xffffffff
       return '8%x' % Result
+      
+      
     def pagerank(domain):  
+    
       StartURL = "http://toolbarqueries.google.com/tbr?client=navclient-auto&features=Rank:&q=info:";
       GoogleURL = StartURL+domain+'&ch='+HashURL(domain)
       try:
@@ -27,7 +30,10 @@ title: Google rank by Python
       except BaseException, e:
         print  e, domain
         return domain, "error"
+        
+        
     if __name__ == "__main__":
+    
       urls = open("url.txt", "r").readlines()
       urls = urlDomain(urls)
       for url in urls:
