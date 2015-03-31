@@ -3,7 +3,7 @@ layout: post
 title: Jsp 数据库连接工具
 ---
 
-再玩struts2漏洞的时候,传shell,找数据库配置文件，当没开外网的时候，可以直接用下面的脚本。
+在玩struts2漏洞的时候,传shell,找数据库配置文件，当没开外网的时候，可以直接用下面的脚本。
 
 ###
     <%@ page import="java.sql.*" %>
@@ -53,4 +53,5 @@ title: Jsp 数据库连接工具
     %>
     
 自己配置好了之后上传到站点，然后可以用来直接执行数据库操作，或者外连sqlmap.
+比如：https://butian.360.cn/vul/info/qid/QTVA-2015-201287
 
